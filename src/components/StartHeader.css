@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Roboto&family=Ubuntu&display=swap');
+.header {
+    font-family: 'Gochi Hand', cursive;
+    font-size: 4rem;
+  }
+.header-text {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.header-container {
+    text-align: center;
+    padding: 5rem;
+    height: 100%;
+    background-color: #ffc45c;
+}
