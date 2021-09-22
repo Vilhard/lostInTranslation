@@ -4,21 +4,7 @@ const apiURL = 'https://noroff-assignment-api-lit.herokuapp.com'
 const apiKey = "ByvuHqRoCVXC9G9Z06xa3ec9rDXYgZyJZRDXJ9k3arjVxy2AuUXX6c34Z2dgnlx2";
 
 const TranslationsAPI = {
-    // async fetchUser(username) {
-    //     try {
-    //       const result = await fetch(`${apiURL}/translations?username=${username}`)
-	// 		.then((response) => response.json())
-	// 		.then((results) => {
-	// 			// results will be an array of users that match the username of victor.
-	// 			console.log("Users fetched: " + results[0])
-    //             const found = results.find(user => user.username === username)
-                
-	// 		})
-    //     } catch(error) {
-    //         console.log(error.message)
-    //     }
-		
-	// },
+	
      async getUsername(username) {
        return await axios.get(`${apiURL}/translations?username=${username}`).then(response => 
             response.data
