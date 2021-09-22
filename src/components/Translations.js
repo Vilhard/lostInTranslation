@@ -1,6 +1,10 @@
+
 const Translation = () => {
+
     return (  
-        <h1>Translation page</h1>
+        <>
+            <h1>Translations page</h1>
+        </>
     );
 }
 

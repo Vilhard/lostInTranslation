@@ -5,66 +5,38 @@ const apiKey = "ByvuHqRoCVXC9G9Z06xa3ec9rDXYgZyJZRDXJ9k3arjVxy2AuUXX6c34Z2dgnlx2
 
 const TranslationsAPI = {
 	
-     async getUsername(username) {
+     async getUser(username) {
        return await axios.get(`${apiURL}/translations?username=${username}`).then(response => 
             response.data
-        )
+        ).catch(error => console.log(error))
     },
-	async fetchTranslations(username) {
-		fetch(`${apiURL}/translations?username=${username}`)
-			.then((response) => response.json())
-			.then((results) => {
-				// results will be an array of users that match the username of argument.
-				console.log("fetchTranslations: " + results);
-			})
-			.catch((error) => {});
-	},
+
 	async setNewUser(username) {
-		fetch(`${apiURL}/translations`, {
-			method: "POST",
+		const user = { username: username, translations: [] };
+		const headers = {
 			headers: {
 				"X-API-Key": apiKey,
 				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				username: username,
-				translations: [],
-			}),
-		})
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error("Could not create new user");
-				}
-				return response.json();
-			})
-			.then((newUser) => {
-				// newUser is the new user with an id
-				console.log("New User: " + newUser);
-			})
-			.catch((error) => {});
+			}
+		};
+		return await axios
+			.post(`${apiURL}/translations?username=${username}`, user, headers)
+			.then((response) => response.data)
+			.catch((error) => console.log(error.response));
 	},
-	async updateTranslations(userId) {
-		fetch(`${apiURL}/translations/${userId}`, {
-			method: "PATCH", // NB: Set method to PATCH
+
+	async updateTranslations(userId, translationsArray) {
+		const translations = { translations: translationsArray };
+		const headers = {
 			headers: {
 				"X-API-Key": apiKey,
 				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				// Provide new translations to add to user with id 1
-				translations: ["easy", "i love javascript"],
-			}),
-		})
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error("Could not update translations history");
-				}
-				return response.json();
-			})
-			.then((updatedUser) => {
-				// updatedUser is the user with the Patched data
-			})
-			.catch((error) => {});
+			}
+		};
+		return await axios
+			.patch(`${apiURL}/translations/${userId}`, translations, headers)
+			.then((response) => response.data)
+			.catch((error) => console.log(error.response));
 	},
 };
 export default TranslationsAPI

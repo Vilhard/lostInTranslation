@@ -1,24 +1,22 @@
-import { useState } from "react";
 import StartHeader from "./StartHeader";
 import TranslationsAPI from "../api/TranslationsAPI";
 import './StartStyles.css'
+import { useUser } from "../context/UserContext";
+import {useHistory} from "react-router-dom";
 
 const Start = () => {
+    const { user, setUser} = useUser()
+    const history = useHistory()
 
-    const [user, setUser] = useState({
-        username: '',
-        translations: []
-    })
     const onInputChange = e => {
-        setUser({
-            ...user,
-            [e.target.id]: e.target.value
-        })
+        setUser(e.target.value)
     }
     const onLoginSubmit = async e => {
         e.preventDefault()
-        const fetchUser = await TranslationsAPI.getUsername(user.username)
-        fetchUser.length === 0 ? TranslationsAPI.setNewUser(user.username) : console.log('User exists')
+        const fetchUser = await TranslationsAPI.getUser(user)
+        fetchUser.length === 0 
+        ? TranslationsAPI.setNewUser(user).then(() => history.push('/profile')) 
+        : history.push('/profile')
     }
 
     return (
