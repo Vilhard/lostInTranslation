@@ -1,9 +1,11 @@
 
 const Translation = () => {
 
+    const username = localStorage.getItem('username')
+
     return (  
         <>
-            <h1>Translations page</h1>
+            <h1>Translation page for user: {username}</h1>
         </>
     );
 }

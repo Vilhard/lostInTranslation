@@ -1,6 +1,6 @@
-import './StartHeader.css';
+import './Header.css';
 
-const StartHeader = () => {
+const Header = () => {
   return (
     <div className="header-container">
       <h1 className="header">Lost in Translation</h1>
@@ -8,4 +8,4 @@ const StartHeader = () => {
     </div>
   );
 };
-export default StartHeader;
+export default Header;

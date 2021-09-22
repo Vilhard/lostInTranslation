@@ -6,6 +6,7 @@ import TranslationsAPI from "../api/TranslationsAPI";
 const Profile = () => {
     const { translationState, dispatch } = useTranslationContext()
     const { user } = useUser()
+    const username = localStorage.getItem('username')
 
     useEffect(() => {
         const loadTranslation  = async () => {
@@ -23,7 +24,7 @@ const Profile = () => {
 
     return (  
         <>
-            <h1>Translations in Profile page</h1>
+            <h1>Translations for user: {username}</h1>
             { translationState.loading && <p>Loading translations...</p> }
             <ul>
                 { translationState.translations.map((trans, i) => <li key={i}>{trans}</li>) }
