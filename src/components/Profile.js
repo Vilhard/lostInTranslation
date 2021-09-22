@@ -2,14 +2,17 @@ import { useEffect } from "react";
 import { useTranslationContext } from "../context/TranslationContext";
 import { useUser } from "../context/UserContext";
 import TranslationsAPI from "../api/TranslationsAPI";
+import { useHistory } from "react-router-dom";
 
 const Profile = () => {
+    const history = useHistory();
     const { translationState, dispatch } = useTranslationContext()
     const { user } = useUser()
     const username = localStorage.getItem('username')
 
     useEffect(() => {
         const loadTranslation  = async () => {
+            if(localStorage.getItem('username') === null) history.push("/");
             try {
                const response = await TranslationsAPI.getUser(user)
                const translations = response[0].translations
@@ -19,7 +22,7 @@ const Profile = () => {
                 console.log(e.message)
             }
         }
-          loadTranslation()  
+        loadTranslation()  
     }, [])
 
     return (  

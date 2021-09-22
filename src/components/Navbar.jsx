@@ -1,6 +1,6 @@
 import styles from './Navbar.module.css'
 import profilePic from '../assets/profile-blank.png';
-import {Route} from 'react-router-dom'
+// import {Route} from 'react-router-dom'
 import { useHistory } from "react-router-dom";
 
 const Navbar = () => {
@@ -14,7 +14,7 @@ const Navbar = () => {
         history.push("/");
 	}
 
-    const loggedInUser = () => {
+    const userProfile = () => {
         if(username === null){
             return <div className={styles.NavbarUser}>
                 {/* <Route to="/">Log in</Route> */}
@@ -33,7 +33,7 @@ const Navbar = () => {
                 <nav className={styles.Navbar}>
                     <ul className={styles.NavbarMenu}>
                         <li className={styles.NavbarHeadingText}><a className={styles.NavbarUserLogin} href="/">Lost in Translation</a></li>
-                        <li>{loggedInUser()}</li>
+                        <li>{userProfile()}</li>
                     </ul>
                     
                 </nav>

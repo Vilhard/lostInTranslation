@@ -6,11 +6,12 @@ import { useHistory } from "react-router-dom";
 
 const Start = () => {
 	const { user, setUser } = useUser();
-	const history = useHistory();
+	const history = useHistory()
 
 	const onInputChange = (e) => {
 		setUser(e.target.value);
 	};
+
 	const onLoginSubmit = async (e) => {
 		e.preventDefault();
 		const fetchUser = await TranslationsAPI.getUser(user);
