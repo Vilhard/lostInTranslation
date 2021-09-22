@@ -1,4 +1,4 @@
-import Header from "./Header";
+import StartHeading from "./StartHeading";
 import TranslationsAPI from "../api/TranslationsAPI";
 import "./StartStyles.css";
 import { useUser } from "../context/UserContext";
@@ -18,20 +18,20 @@ const Start = () => {
 		if (fetchUser.length === 0) {
 			const newUser = await TranslationsAPI.setNewUser(user);
 			console.log("New user: " + newUser);
-			storeUser(user, newUser.id);
+			loginUser(user, newUser.id);
 		} else {
-			storeUser(user, fetchUser[0].id);
+			loginUser(user, fetchUser[0].id);
 		}
 		history.push("/profile");
 	};
-	function storeUser(username, userId) {
+	function loginUser(username, userId) {
 		localStorage.setItem("username", username);
 		localStorage.setItem("id", userId);
 	}
 
 	return (
 		<div>
-			<Header />
+			<StartHeading />
 			<div className="center">
 				<form className="form-container">
 					<div className="Input">

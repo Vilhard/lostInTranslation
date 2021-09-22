@@ -9,16 +9,39 @@
   padding: 0;
   margin: 0;
   overflow: hidden;
-  align-items: center;
   list-style-type: none;
+}
+.NavbarMenu li {
+  flex: auto;
 }
 .NavbarMenuItem {
   font-size:1.2rem;
   font-family: "Ubuntu", sans-serif;
 }
-.NavbarHeaderText {
+.NavbarHeadingText {
   font-family: "Gochi Hand", cursive;
-  font-size: 2rem;
+  font-size: 1.7rem;
   padding: 1rem;
-  
+  margin: auto 0;
+}
+.NavbarUser {
+  display: flex;
+  float: right;
+  padding: 1rem;
+  font-weight: bold;
+}
+.NavbarUserName {
+  margin: auto 0;
+  padding-right: .5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.NavbarUserPic {
+  border-radius: 50%;
+  width: 3rem;
+  cursor: pointer;
+}
+.NavbarUserLogin {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
 }
