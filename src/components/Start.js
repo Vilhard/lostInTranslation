@@ -9,11 +9,14 @@ const Start = () => {
 	const history = useHistory()
 
 	const onInputChange = (e) => {
-		setUser(e.target.value);
+		setUser(e.target.value.trim());
+		console.log(user)
 	};
 
 	const onLoginSubmit = async (e) => {
 		e.preventDefault();
+		if(user === "")	return
+		
 		const fetchUser = await TranslationsAPI.getUser(user);
 		//If username not found in DB, create new user
 		if (fetchUser.length === 0) {
@@ -23,7 +26,7 @@ const Start = () => {
 		} else {
 			loginUser(user, fetchUser[0].id);
 		}
-		history.push("/profile");
+		history.push("/translations");
 	};
 	function loginUser(username, userId) {
 		localStorage.setItem("username", username);

@@ -14,7 +14,7 @@ const Profile = () => {
         const loadTranslation  = async () => {
             if(localStorage.getItem('username') === null) history.push("/");
             try {
-               const response = await TranslationsAPI.getUser(user)
+               const response = await TranslationsAPI.getUser(username)
                const translations = response[0].translations
                console.log(response)
               dispatch({ type: 'SET_TRANSLATIONS', payload: translations})
@@ -23,7 +23,7 @@ const Profile = () => {
             }
         }
         loadTranslation()  
-    }, [dispatch, history, user])
+    }, [dispatch, history, user, username])
 
     return (  
         <>

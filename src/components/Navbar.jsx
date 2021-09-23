@@ -22,8 +22,12 @@ const Navbar = () => {
             </div>
         }else{
             return <div className={styles.NavbarUser}>
-                    <span onClick={logoutUser} className={styles.NavbarUserName}>{username}</span>
-                    <img onClick={logoutUser} className={styles.NavbarUserPic} src={profilePic} alt="Profile_picture"/>
+                <a href="/profile">
+                    <span className={styles.NavbarUserName}>{username}</span>  
+                    <img className={styles.NavbarUserPic} src={profilePic} alt="Profile_picture"/>
+                </a>
+                <button onClick={logoutUser}>Log out</button>
+                    
                 </div>
         }
     }
