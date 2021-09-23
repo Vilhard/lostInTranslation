@@ -37,7 +37,7 @@ const Translation = () => {
 	return (
 		<>
 			<h1>Translation page for user: {username}</h1>
-			<input id="translation" type="text" placeholder="Enter translation..." value={input} onChange={translate} className="Input-text" maxlength="30"/>
+			<input id="translation" type="text" placeholder="Enter translation..." value={input} onChange={translate} className="Input-text" maxlength="40"/>
 			<button onClick={saveTranslation}>Save translation</button>
 			<div>
 				{input.split('')
