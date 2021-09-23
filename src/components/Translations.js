@@ -7,7 +7,7 @@ const Translation = () => {
 
     useEffect(() => {
         if(localStorage.getItem('username') === null) history.push("/");
-    }, [])
+    }, [history])
 
     return (  
         <>

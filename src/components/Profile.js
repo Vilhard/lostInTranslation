@@ -23,7 +23,7 @@ const Profile = () => {
             }
         }
         loadTranslation()  
-    }, [])
+    }, [dispatch, history, user])
 
     return (  
         <>
