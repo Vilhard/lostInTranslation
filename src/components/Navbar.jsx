@@ -13,19 +13,25 @@ const Navbar = () => {
 		localStorage.removeItem("id");
         history.push("/");
 	}
+    function goToFrontPage(){
+        history.push("/")
+    }
+    function goToProfilePage(){
+        history.push("/profile")
+    }
 
     const userProfile = () => {
         if(username === null){
             return <div className={styles.NavbarUser}>
                 {/* <Route to="/">Log in</Route> */}
-                <a className={styles.NavbarUserLogin} href="/">Log in</a>
+                <span className={styles.NavbarUserLogin} onClick={goToFrontPage}>Log in</span>
             </div>
         }else{
             return <div className={styles.NavbarUser}>
-                <a href="/profile">
+                <div onClick={goToProfilePage}>
                     <span className={styles.NavbarUserName}>{username}</span>  
                     <img className={styles.NavbarUserPic} src={profilePic} alt="Profile_picture"/>
-                </a>
+                </div>
                 <button onClick={logoutUser}>Log out</button>
                     
                 </div>

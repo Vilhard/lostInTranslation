@@ -3,6 +3,7 @@ import TranslationsAPI from "../api/TranslationsAPI";
 import "./StartStyles.css";
 import { useUser } from "../context/UserContext";
 import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
 
 const Start = () => {
 	const { user, setUser } = useUser();
@@ -13,10 +14,15 @@ const Start = () => {
 		console.log(user)
 	};
 
+	function loginUser(username, userId) {
+		localStorage.setItem("username", username);
+		localStorage.setItem("id", userId);
+	}
+
 	const onLoginSubmit = async (e) => {
 		e.preventDefault();
 		if(user === "")	return
-		
+
 		const fetchUser = await TranslationsAPI.getUser(user);
 		//If username not found in DB, create new user
 		if (fetchUser.length === 0) {
@@ -28,10 +34,10 @@ const Start = () => {
 		}
 		history.push("/translations");
 	};
-	function loginUser(username, userId) {
-		localStorage.setItem("username", username);
-		localStorage.setItem("id", userId);
-	}
+	
+	useEffect(() => {
+        if(localStorage.getItem('username') !== null) history.push("/translations");
+    }, [history])
 
 	return (
 		<div>
