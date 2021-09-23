@@ -26,7 +26,6 @@ const TranslationsAPI = {
 	},
 
 	async updateTranslations(userId, translationsArray) {
-		const translations = { translations: translationsArray };
 		const headers = {
 			headers: {
 				"X-API-Key": apiKey,
@@ -34,7 +33,7 @@ const TranslationsAPI = {
 			}
 		};
 		return await axios
-			.patch(`${apiURL}/translations/${userId}`, translations, headers)
+			.patch(`${apiURL}/translations/${userId}`, translationsArray, headers)
 			.then((response) => response.data)
 			.catch((error) => console.log(error.response));
 	},

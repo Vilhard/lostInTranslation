@@ -1,17 +1,18 @@
 import StartHeading from "./StartHeading";
+import { useTranslationContext } from "../context/TranslationContext";
 import TranslationsAPI from "../api/TranslationsAPI";
 import "./StartStyles.css";
 import { useUser } from "../context/UserContext";
 import { useHistory } from "react-router-dom";
-import { useEffect } from "react";
 
 const Start = () => {
 	const { user, setUser } = useUser();
-	const history = useHistory()
+	const history = useHistory();
+	const { dispatch } = useTranslationContext();
 
 	const onInputChange = (e) => {
 		setUser(e.target.value.trim());
-		console.log(user)
+		console.log(user);
 	};
 
 	function loginUser(username, userId) {
@@ -21,23 +22,26 @@ const Start = () => {
 
 	const onLoginSubmit = async (e) => {
 		e.preventDefault();
-		if(user === "")	return
+		if (user === "") return;
 
 		const fetchUser = await TranslationsAPI.getUser(user);
+		console.log(fetchUser);
 		//If username not found in DB, create new user
 		if (fetchUser.length === 0) {
 			const newUser = await TranslationsAPI.setNewUser(user);
 			console.log("New user: " + newUser);
 			loginUser(user, newUser.id);
 		} else {
+			//Save to context
+			dispatch({
+				type: "ADD_TRANSLATIONS",
+				payload: fetchUser[0].translations,
+			});
+			//Save to localStorage
 			loginUser(user, fetchUser[0].id);
 		}
 		history.push("/translations");
 	};
-	
-	useEffect(() => {
-        if(localStorage.getItem('username') !== null) history.push("/translations");
-    }, [history])
 
 	return (
 		<div>

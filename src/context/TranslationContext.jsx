@@ -7,20 +7,18 @@ export const useTranslationContext = () => {
 }
 
 const translationReducer = (state, action) => {
+    console.log("Payload: " + JSON.stringify(action.payload))
     switch (action.type) {
         case 'ADD_TRANSLATION': 
             return {
-                loading: false,
-                translations: action.payload
+                translations: [...state.translations, action.payload]
             }
-        case 'SET_TRANSLATIONS':
+        case 'ADD_TRANSLATIONS': 
             return {
-                loading: false,
-                translations: action.payload
+                translations: [...action.payload]
             }
         case 'CLEAR_TRANSLATIONS':
             return {
-                loading: false,
                 translations: action.payload 
             }
         default:
@@ -29,7 +27,6 @@ const translationReducer = (state, action) => {
 }
 
 const initialState = {
-    loading: true,
     translations: []
 }
 

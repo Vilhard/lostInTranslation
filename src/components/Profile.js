@@ -2,17 +2,18 @@ import { useEffect } from "react";
 import { useTranslationContext } from "../context/TranslationContext";
 import { useUser } from "../context/UserContext";
 import TranslationsAPI from "../api/TranslationsAPI";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
+import withUser from "../hoc/withUser.jsx"
 
 const Profile = () => {
-    const history = useHistory();
+    // const history = useHistory();
     const { translationState, dispatch } = useTranslationContext()
     const { user } = useUser()
     const username = localStorage.getItem('username')
 
     useEffect(() => {
         const loadTranslation  = async () => {
-            if(localStorage.getItem('username') === null) history.push("/");
+            // if(localStorage.getItem('username') === null) history.push("/");
             try {
                const response = await TranslationsAPI.getUser(username)
                const translations = response[0].translations
@@ -23,7 +24,7 @@ const Profile = () => {
             }
         }
         loadTranslation()  
-    }, [dispatch, history, user, username])
+    }, [dispatch, user, username])
 
     return (  
         <>
@@ -37,4 +38,4 @@ const Profile = () => {
     );
 }
 
-export default Profile
+export default withUser(Profile)
