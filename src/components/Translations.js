@@ -28,8 +28,6 @@ const Translation = () => {
 	useEffect(() => {
 		const translationsToApi = async () => {
 			await TranslationsAPI.updateTranslations(userId, translationState);
-			//Save to API
-			console.log("Save to API: " + JSON.stringify(translationState));
 		};
 		translationsToApi();
 	}, [translationState, userId]);
@@ -37,7 +35,7 @@ const Translation = () => {
 	return (
 		<>
 			<h1>Translation page for user: {username}</h1>
-			<input id="translation" type="text" placeholder="Enter translation..." value={input} onChange={translate} className="Input-text" maxlength="40"/>
+			<input id="translation" type="text" placeholder="Enter translation..." value={input} onChange={translate} className="Input-text" maxLength="40"/>
 			<button onClick={saveTranslation}>Save translation</button>
 			<div>
 				{input.split('')
