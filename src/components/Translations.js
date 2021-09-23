@@ -1,4 +1,5 @@
 import withUser from "../hoc/withUser.jsx";
+import styles from './Translations.module.css'
 import { useEffect } from "react";
 import TranslationsAPI from "../api/TranslationsAPI";
 import { useTranslationContext } from "../context/TranslationContext";
@@ -12,12 +13,10 @@ const Translation = () => {
 
 	function translate(e) {
 		setInput(e.target.value);
-		console.log("Translation changed: " + input);
 	}
 	function saveTranslation() {
 		if (input.trim() === "") return;
 
-		console.log("Save to context: " + JSON.stringify(input));
 		//Save to context
 		dispatch({
 			type: "ADD_TRANSLATION",
@@ -32,14 +31,24 @@ const Translation = () => {
 			//Save to API
 			console.log("Save to API: " + JSON.stringify(translationState));
 		};
-        translationsToApi()
+		translationsToApi();
 	}, [translationState, userId]);
 
 	return (
 		<>
 			<h1>Translation page for user: {username}</h1>
-			<input id="translation" type="text" placeholder="Enter translation..." value={input} onChange={translate} className="Input-text" />
+			<input id="translation" type="text" placeholder="Enter translation..." value={input} onChange={translate} className="Input-text" maxlength="30"/>
 			<button onClick={saveTranslation}>Save translation</button>
+			<div>
+				{input.split('')
+				.map((character, index) => (
+					<img 
+					src={"/signs/" + character + ".png"} 
+					key={index} alt="sign-language" 
+					onError={(event) => event.target.style.display = 'none'}
+					className={styles.SignImage}/>
+				))}
+			</div>
 		</>
 	);
 };
