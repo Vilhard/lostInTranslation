@@ -11,6 +11,7 @@ const Input = props => {
       <input
         id={props.id}
         type="text"
+        value={props.value}
         placeholder={props.placeholder}
         onChange={props.onInputChange}
         maxLength={props.maxLength}

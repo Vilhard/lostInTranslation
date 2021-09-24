@@ -51,7 +51,7 @@ const Translation = () => {
 		<>
 		<div className={styles.container}>
 			<div className={styles.inputContainer}>
-			<Input id="translation" placeholder="Enter translation..." onInputChange={translate} onButtonSubmit={saveTranslation} maxLength="40" />
+			<Input id="translation" placeholder="Enter translation..." onInputChange={translate} onButtonSubmit={saveTranslation} value={input} maxLength="40" />
 			</div>
 		</div>
 		<div className={styles.center}>
