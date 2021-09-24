@@ -1,5 +1,4 @@
 import StartHeading from "./StartHeading";
-import { useTranslationContext } from "../context/TranslationContext";
 import TranslationsAPI from "../api/TranslationsAPI";
 import "./StartStyles.css";
 import { useUser } from "../context/UserContext";
@@ -8,11 +7,9 @@ import { useHistory } from "react-router-dom";
 const Start = () => {
 	const { user, setUser } = useUser();
 	const history = useHistory();
-	const { dispatch } = useTranslationContext();
 
 	const onInputChange = (e) => {
 		setUser(e.target.value.trim());
-		console.log(user);
 	};
 
 	function loginUser(username, userId) {
@@ -31,11 +28,6 @@ const Start = () => {
 			const newUser = await TranslationsAPI.setNewUser(user);
 			loginUser(user, newUser.id);
 		} else {
-			//Save to context
-			dispatch({
-				type: "ADD_TRANSLATIONS",
-				payload: fetchUser[0].translations,
-			});
 			//Save to localStorage
 			loginUser(user, fetchUser[0].id);
 		}
@@ -43,7 +35,7 @@ const Start = () => {
 	};
 
 	return (
-		<div>
+		<>
 			<StartHeading />
 			<div className="center">
 				<form className="form-container">
@@ -55,7 +47,7 @@ const Start = () => {
 					</div>
 				</form>
 			</div>
-		</div>
+		</>
 	);
 };
 

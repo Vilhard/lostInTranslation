@@ -17,7 +17,7 @@ const translationReducer = (state, action) => {
             return {
                 translations: [...action.payload]
             }
-        case 'CLEAR_TRANSLATIONS':
+        case 'SET_TRANSLATIONS':
             return {
                 translations: action.payload 
             }
