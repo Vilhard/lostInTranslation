@@ -6,7 +6,9 @@
     padding: 2.5rem;
 }
 .inputContainer {
-    background-color: aqua;
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 input[type="text"], 
   textarea {
@@ -16,3 +18,17 @@ input[type="text"],
   select {
     color: black;
   }
+.translationCard {
+  text-align: start;
+  padding: 1.5rem;
+  min-height: 2rem;
+  margin: 3rem;
+  padding-bottom: 3rem;
+  background: repeating-linear-gradient(#ffffff, #ffffff 85%, #885cc4 15%, #885cc4 100%);
+  border-radius: 1rem;
+  box-shadow: 0 0 2rem 0.3rem rgba(0, 0, 0, 0.2);
+}
+.center {
+  padding-left: 10%;
+  padding-right: 10%;
+}

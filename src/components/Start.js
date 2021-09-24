@@ -37,7 +37,6 @@ const Start = () => {
 
 	return (
 		<>
-		
 			<StartHeading />
 			<div className={styles.center}>
 				<form className={styles.formContainer}>

@@ -48,19 +48,24 @@ const Translation = () => {
 	}, [userId, translationState]);
 
 	return (
+		<>
 		<div className={styles.container}>
 			<div className={styles.inputContainer}>
-			<Input id="translation" placeholder="Enter translation..." onInputChange={translate} onButtonSubmit={saveTranslation}/>
-			<div>
+			<Input id="translation" placeholder="Enter translation..." onInputChange={translate} onButtonSubmit={saveTranslation} maxLength="40" />
+			</div>
+		</div>
+		<div className={styles.center}>
+		<div className={styles.translationCard}>
 				{input.split("")
 					.map((character, index) =>
 						character.toLowerCase().match(/[a-z ]/) ? 
-						<img src={"/signs/" + character + ".png"} key={index} alt="sign-language" onError={(event) => (event.target.style.display = "none")} className={styles.SignImage} /> : 
-						<div key={index}>Character not allowed: {character}</div>
+						<img src={"/signs/" + character + ".png"} key={index} alt="sign-language" onError={(event) => (event.target.style.display = "none")} className={styles.SignImage} /> 
+						: <span></span>
+						
 					)}
 			</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

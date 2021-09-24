@@ -13,6 +13,7 @@ const Input = props => {
         type="text"
         placeholder={props.placeholder}
         onChange={props.onInputChange}
+        maxLength={props.maxLength}
         className="Input-text"
       />
       <button className={styles.button} type="submit" onClick={props.onButtonSubmit}>
