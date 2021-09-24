@@ -10,7 +10,6 @@ const Profile = () => {
 
 	function clearTranslations() {
 		dispatch({ type: "SET_TRANSLATIONS", payload: [] });
-		console.log("translationState: " + JSON.stringify(translationState));
 	}
 	//Get current translations from the API and update Context
 	useEffect(() => {

@@ -22,7 +22,6 @@ const Start = () => {
 		if (user === "") return;
 
 		const fetchUser = await TranslationsAPI.getUser(user);
-		console.log(fetchUser);
 		//If username not found in DB, create new user
 		if (fetchUser.length === 0) {
 			const newUser = await TranslationsAPI.setNewUser(user);

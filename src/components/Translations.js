@@ -10,20 +10,20 @@ const Translation = () => {
 	const userId = localStorage.getItem("id");
 	const { translationState, dispatch } = useTranslationContext();
 	const [input, setInput] = useState("");
-	const invalidCharacters = /[0-9!¤@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/;
 
 	function translate(e) {
 		setInput(e.target.value);
 	}
-	//@"^[0-9*#+]+$"
-	function saveTranslation() {
-		if (input.trim() === "" || input.trim().toLowerCase().match(invalidCharacters)) return;
+	function saveTranslation(e) {
+		e.preventDefault()
+		if (input.trim() === "" || !input.toLowerCase().match(/[a-z ]/)) return;
 		//Save to context
 		dispatch({
 			type: "ADD_TRANSLATION",
-			payload: input,
+			payload: input.trim(),
 		});
 		setInput("");
+
 	}
 
 	//Get user from API and init context
@@ -52,10 +52,11 @@ const Translation = () => {
 			<input id="translation" type="text" placeholder="Enter translation..." value={input} onChange={translate} className="Input-text" maxLength="40" />
 			<button onClick={saveTranslation}>Save translation</button>
 			<div>
-				{input
-					.split("")
+				{input.split("")
 					.map((character, index) =>
-						character.toLowerCase().match(/[a-z]/) ? <img src={"/signs/" + character + ".png"} key={index} alt="sign-language" onError={(event) => (event.target.style.display = "none")} className={styles.SignImage} /> : console.log("Character not supported: " + character)
+						character.toLowerCase().match(/[a-z ]/) ? 
+						<img src={"/signs/" + character + ".png"} key={index} alt="sign-language" onError={(event) => (event.target.style.display = "none")} className={styles.SignImage} /> : 
+						<div key={index}>Character not allowed: {character}</div>
 					)}
 			</div>
 		</>

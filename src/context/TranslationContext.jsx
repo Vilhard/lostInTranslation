@@ -7,7 +7,6 @@ export const useTranslationContext = () => {
 }
 
 const translationReducer = (state, action) => {
-    console.log("Payload: " + JSON.stringify(action.payload))
     switch (action.type) {
         case 'ADD_TRANSLATION': 
             return {
