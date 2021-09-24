@@ -1,5 +1,8 @@
 import { useEffect } from "react";
 import { useTranslationContext } from "../context/TranslationContext";
+import styles from './Profile.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import TranslationsAPI from "../api/TranslationsAPI";
 import withUser from "../hoc/withUser.jsx";
 
@@ -41,15 +44,19 @@ const Profile = () => {
 	}, [userId, translationState]);
 
 	return (
-		<>
-			<h1>Translations for user: {username}</h1>
-			<ul>
+		<div className={styles.mainContainer}>
+			<div className={styles.formContainer}>
+				<h2 className={styles.header}>Translations</h2>
+			<ul className={styles.listContainer}>
 				{translationState.translations.slice(0, 10).reverse().map((trans, i) => (
-					<li key={i}>{trans}</li>
+					<li className={styles.text} key={i}>{trans}</li>
 				))}
 			</ul>
-			<button onClick={clearTranslations}>Clear translations</button>
-		</>
+			<button className={styles.button} onClick={clearTranslations}>
+				<FontAwesomeIcon icon={faTrashAlt} size="2x"/>
+			</button>
+		</div>
+		</div>
 	);
 };
 
