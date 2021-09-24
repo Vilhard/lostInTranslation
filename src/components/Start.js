@@ -1,6 +1,7 @@
 import StartHeading from "./StartHeading";
 import TranslationsAPI from "../api/TranslationsAPI";
-import "./StartStyles.css";
+import Input from './Input';
+import styles from './Start.module.css'
 import { useUser } from "../context/UserContext";
 import { useHistory } from "react-router-dom";
 
@@ -35,15 +36,11 @@ const Start = () => {
 
 	return (
 		<>
+		
 			<StartHeading />
-			<div className="center">
-				<form className="form-container">
-					<div className="Input">
-						<input id="username" type="text" placeholder="What's your name?" onChange={onInputChange} className="Input-text" />
-						<button type="submit" onClick={onLoginSubmit}>
-							GO
-						</button>
-					</div>
+			<div className={styles.center}>
+				<form className={styles.formContainer}>
+					<Input id="username" placeholder="What's your name?" onInputChange={onInputChange} onButtonSubmit={onLoginSubmit}/>
 				</form>
 			</div>
 		</>

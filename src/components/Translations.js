@@ -1,6 +1,7 @@
 import withUser from "../hoc/withUser.jsx";
 import styles from "./Translations.module.css";
 import { useEffect } from "react";
+import Input from "./Input.jsx";
 import TranslationsAPI from "../api/TranslationsAPI";
 import { useTranslationContext } from "../context/TranslationContext";
 import { useState } from "react";
@@ -47,10 +48,9 @@ const Translation = () => {
 	}, [userId, translationState]);
 
 	return (
-		<>
-			<h1>Translation page for user: {username}</h1>
-			<input id="translation" type="text" placeholder="Enter translation..." value={input} onChange={translate} className="Input-text" maxLength="40" />
-			<button onClick={saveTranslation}>Save translation</button>
+		<div className={styles.container}>
+			<div className={styles.inputContainer}>
+			<Input id="translation" placeholder="Enter translation..." onInputChange={translate} onButtonSubmit={saveTranslation}/>
 			<div>
 				{input.split("")
 					.map((character, index) =>
@@ -59,7 +59,8 @@ const Translation = () => {
 						<div key={index}>Character not allowed: {character}</div>
 					)}
 			</div>
-		</>
+			</div>
+		</div>
 	);
 };
 
