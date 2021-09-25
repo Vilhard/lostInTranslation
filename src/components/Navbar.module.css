@@ -15,7 +15,7 @@
   flex: auto;
 }
 .NavbarMenuItem {
-  font-size:1.2rem;
+  font-size: 1.2rem;
   font-family: "Ubuntu", sans-serif;
 }
 .NavbarHeadingText {
@@ -32,16 +32,22 @@
 }
 .NavbarUserName {
   margin: auto 0;
-  padding-right: .5rem;
+  font-size: 1rem;
+  font-family: "Ubuntu", sans-serif;
+  padding-right: 1rem;
+  color: white;
   font-weight: bold;
   cursor: pointer;
+  border-radius: 1rem;
 }
 .NavbarUserPic {
-  border-radius: 50%;
-  width: 3rem;
-  cursor: pointer;
+  padding-right: 1rem;
+  background-color: black;
 }
 .NavbarUserLogin {
   color: inherit; /* blue colors for links too */
   text-decoration: inherit; /* no underline */
+}
+.NavBarButton {
+  cursor: pointer;
 }
