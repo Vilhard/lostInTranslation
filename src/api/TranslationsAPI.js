@@ -4,13 +4,14 @@ const apiURL = 'https://noroff-assignment-api-lit.herokuapp.com'
 const apiKey = "ByvuHqRoCVXC9G9Z06xa3ec9rDXYgZyJZRDXJ9k3arjVxy2AuUXX6c34Z2dgnlx2";
 
 const TranslationsAPI = {
-	
-     async getUser(username) {
-       return await axios.get(`${apiURL}/translations?username=${username}`).then(response => 
-            response.data
-        ).catch(error => console.log(error))
-    },
 
+	// GET: user from DB
+	async getUser(username) {
+		return await axios.get(`${apiURL}/translations?username=${username}`).then(response =>
+			response.data
+		).catch(error => console.log(error))
+	},
+	// POST: user to DB
 	async setNewUser(username) {
 		const user = { username: username, translations: [] };
 		const headers = {
@@ -25,6 +26,7 @@ const TranslationsAPI = {
 			.catch((error) => console.log(error.response));
 	},
 
+	//PATCH: update user translations in DB
 	async updateTranslations(userId, translationsArray) {
 		const headers = {
 			headers: {

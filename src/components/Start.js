@@ -10,15 +10,18 @@ const Start = () => {
 	const { user, setUser } = useUser();
 	const history = useHistory();
 
+	// Catch input text to user state
 	const onInputChange = (e) => {
 		setUser(e.target.value.trim());
 	};
 
-	function loginUser(username, userId) {
+	// Save user to localStorage for session handling
+	const loginUser = (username, userId) => {
 		localStorage.setItem("username", username);
 		localStorage.setItem("id", userId);
 	}
 
+	// Add user to DB if it doesn't exist yet
 	const onLoginSubmit = async (e) => {
 		e.preventDefault();
 		if (user === "") return;
@@ -40,7 +43,7 @@ const Start = () => {
 			<StartHeading />
 			<div className={styles.center}>
 				<form className={styles.formContainer}>
-					<Input id="username" placeholder="What's your name?" onInputChange={onInputChange} onButtonSubmit={onLoginSubmit}/>
+					<Input id="username" placeholder="What's your name?" onInputChange={onInputChange} onButtonSubmit={onLoginSubmit} />
 				</form>
 			</div>
 		</>

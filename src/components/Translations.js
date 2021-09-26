@@ -12,10 +12,12 @@ const Translation = () => {
 	const { translationState, dispatch } = useTranslationContext();
 	const [input, setInput] = useState("");
 
-	function translate(e) {
+	// Catch input text to state
+	const translate = e => {
 		setInput(e.target.value);
 	}
-	function saveTranslation(e) {
+	// add input text to translationContext
+	const saveTranslation = e => {
 		e.preventDefault()
 		if (input.trim() === "" || !input.toLowerCase().match(/[a-z ]/)) return;
 		//Save to context
@@ -24,7 +26,6 @@ const Translation = () => {
 			payload: input.trim(),
 		});
 		setInput("");
-
 	}
 
 	//Get user from API and init context
@@ -49,21 +50,21 @@ const Translation = () => {
 
 	return (
 		<>
-		<div className={styles.container}>
-			<div className={styles.inputContainer}>
-			<Input id="translation" placeholder="Enter translation..." onInputChange={translate} onButtonSubmit={saveTranslation} value={input} maxLength="40" />
+			<div className={styles.container}>
+				<div className={styles.inputContainer}>
+					<Input id="translation" placeholder="Enter translation..." onInputChange={translate} onButtonSubmit={saveTranslation} value={input} maxLength="40" />
+				</div>
 			</div>
-		</div>
-		<div className={styles.center}>
-		<div className={styles.translationCard}>
-				{input.split("")
-					.map((character, index) =>
-						character.toLowerCase().match(/[a-z ]/) ? 
-						<img src={"/signs/" + character + ".png"} key={index} alt="sign-language" onError={(event) => (event.target.style.display = "none")} className={styles.SignImage} /> 
-						: <span></span>
-						
-					)}
-			</div>
+			<div className={styles.center}>
+				<div className={styles.translationCard}>
+					{input.split("")
+						.map((character, index) =>
+							character.toLowerCase().match(/[a-z ]/) ?
+								<img src={"/signs/" + character + ".png"} key={index} alt="sign-language" onError={(event) => (event.target.style.display = "none")} className={styles.SignImage} />
+								: <span></span>
+
+						)}
+				</div>
 			</div>
 		</>
 	);
