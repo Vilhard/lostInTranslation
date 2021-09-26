@@ -13,11 +13,11 @@ const Translation = () => {
 	const [input, setInput] = useState("");
 
 	// Catch input text to state
-	const translate = e => {
+	function translate(e) {
 		setInput(e.target.value);
 	}
 	// add input text to translationContext
-	const saveTranslation = e => {
+	function saveTranslation(e) {
 		e.preventDefault()
 		if (input.trim() === "" || !input.toLowerCase().match(/[a-z ]/)) return;
 		//Save to context
@@ -57,6 +57,7 @@ const Translation = () => {
 			</div>
 			<div className={styles.center}>
 				<div className={styles.translationCard}>
+					{console.log("T-STATE:" + JSON.stringify(translationState))}
 					{input.split("")
 						.map((character, index) =>
 							character.toLowerCase().match(/[a-z ]/) ?

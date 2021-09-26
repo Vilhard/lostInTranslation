@@ -14,7 +14,6 @@ const Profile = () => {
 	// push empty array to translation state to clear it
 	function clearTranslations() {
 		dispatch({ type: "SET_TRANSLATIONS", payload: [] });
-		updateTranslations();
 	}
 	//Get current translations from the API and update Context
 	useEffect(() => {
@@ -33,14 +32,17 @@ const Profile = () => {
 		initTranslations();
 	}, [username, dispatch]);
 
-	// update translatation to database
-	const updateTranslations = async () => {
-		try {
-			await TranslationsAPI.updateTranslations(userId, translationState);
-		} catch (error) {
-			console.log(error.message)
-		}
-	};
+	//Update API & display when state changes
+	useEffect(() => {
+		const updateTranslations = async () => {
+			try {
+				await TranslationsAPI.updateTranslations(userId, translationState);
+			} catch (error) {
+				console.log(error.message)
+			}
+		};
+		updateTranslations();
+	}, [userId, translationState]);
 
 	return (
 		<div className={styles.mainContainer}>
