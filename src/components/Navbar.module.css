@@ -40,10 +40,6 @@
   cursor: pointer;
   border-radius: 1rem;
 }
-.NavbarUserPic {
-  padding-right: 1rem;
-  background-color: black;
-}
 .NavbarUserLogin {
   color: inherit; /* blue colors for links too */
   text-decoration: inherit; /* no underline */

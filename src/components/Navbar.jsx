@@ -17,18 +17,16 @@ const Navbar = () => {
   }
 
   const userProfile = () => {
-    if (username !== null) {
-      return (
-        <div className={styles.NavbarUser}>
-          <div onClick={goToProfilePage}>
-            <span className={styles.NavbarUserName}>{username}</span>
-          </div>
-          <button styles={styles.NavBarButton} onClick={logoutUser}>
-            <FontAwesomeIcon icon={faSignOutAlt} size="1x" />
-          </button>
+    return (
+      <div className={styles.NavbarUser}>
+        <div onClick={goToProfilePage}>
+          <span className={styles.NavbarUserName}>{username}</span>
         </div>
-      );
-    }
+        <button styles={styles.NavbarButton} onClick={logoutUser}>
+          <FontAwesomeIcon icon={faSignOutAlt} size="1x" />
+        </button>
+      </div>
+    );
   };
   return (
     <>
@@ -39,7 +37,7 @@ const Navbar = () => {
               Lost in Translation
             </a>
           </li>
-          <li>{userProfile()}</li>
+          {username !== null && <li>{userProfile()}</li>}
         </ul>
       </nav>
     </>

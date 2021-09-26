@@ -1,8 +1,8 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faArrowRight, faCommentDots } from '@fortawesome/free-solid-svg-icons'
-import styles from './Start.module.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faCommentDots } from "@fortawesome/free-solid-svg-icons";
+import styles from "./Start.module.css";
 
-const Input = props => {
+const Input = (props) => {
   return (
     <div className={styles.inputContainer}>
       <div className={styles.leftIcon}>
@@ -17,7 +17,7 @@ const Input = props => {
         maxLength={props.maxLength}
         className="Input-text"
       />
-      <button className={styles.button} type="submit" onClick={props.onButtonSubmit}>
+      <button className={styles.button} onClick={props.onButtonSubmit}>
         <FontAwesomeIcon icon={faArrowRight} size="2x" />
       </button>
     </div>
