@@ -18,7 +18,7 @@ const Translation = () => {
 	}
 	// add input text to translationContext
 	function saveTranslation(e) {
-		e.preventDefault()
+		e.preventDefault();
 		if (input.trim() === "" || !input.toLowerCase().match(/[a-z ]/)) return;
 		//Save to context
 		dispatch({
@@ -27,26 +27,29 @@ const Translation = () => {
 		});
 		setInput("");
 	}
-
 	//Get user from API and init context
 	useEffect(() => {
 		const initTranslationContext = async () => {
 			const fetchUser = await TranslationsAPI.getUser(username);
+
 			dispatch({
 				type: "ADD_TRANSLATIONS",
 				payload: fetchUser[0].translations,
 			});
 		};
 		initTranslationContext();
-	}, [username, dispatch]);
+	}, []);
 
 	//Save new translation to api when state changes
 	useEffect(() => {
 		const translationsToApi = async () => {
-			await TranslationsAPI.updateTranslations(userId, translationState);
-		}
+			if (translationState.translations.length > 0) {
+				console.log("translationsToApi: " + JSON.stringify(translationState.translations));
+				await TranslationsAPI.updateTranslations(userId, translationState);
+			}
+		};
 		translationsToApi();
-	}, [userId, translationState]);
+	}, [translationState]);
 
 	return (
 		<>
@@ -57,14 +60,8 @@ const Translation = () => {
 			</div>
 			<div className={styles.center}>
 				<div className={styles.translationCard}>
-					{console.log("T-STATE:" + JSON.stringify(translationState))}
-					{input.split("")
-						.map((character, index) =>
-							character.toLowerCase().match(/[a-z ]/) ?
-								<img src={"/signs/" + character + ".png"} key={index} alt="sign-language" onError={(event) => (event.target.style.display = "none")} className={styles.SignImage} />
-								: <span></span>
-
-						)}
+					{/* {console.log("T-STATE:" + JSON.stringify(translationState))} */}
+					{input.split("").map((character, index) => (character.toLowerCase().match(/[a-z ]/) ? <img src={"/signs/" + character + ".png"} key={index} alt="sign-language" onError={(event) => (event.target.style.display = "none")} className={styles.SignImage} /> : <span></span>))}
 				</div>
 			</div>
 		</>
