@@ -22,7 +22,7 @@ const Navbar = () => {
         <div onClick={goToProfilePage}>
           <span className={styles.NavbarUserName}>{username}</span>
         </div>
-        <button styles={styles.NavbarButton} onClick={logoutUser}>
+        <button className={styles.NavbarButton} onClick={logoutUser}>
           <FontAwesomeIcon icon={faSignOutAlt} size="1x" />
         </button>
       </div>
