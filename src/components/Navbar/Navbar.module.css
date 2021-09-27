@@ -1,0 +1,54 @@
+.Navbar {
+  background-color: #ffc45c;
+  color: white;
+  border-bottom: 0.2rem solid rgba(128, 128, 128, 0.26);
+  box-sizing: border-box;
+}
+.NavbarMenu {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  list-style-type: none;
+}
+.NavbarMenu li {
+  flex: auto;
+}
+.NavbarMenuItem {
+  font-size: 1.2rem;
+  font-family: "Ubuntu", sans-serif;
+}
+.NavbarHeadingText {
+  font-family: "Gochi Hand", cursive;
+  font-size: 1.7rem;
+  padding: 1rem;
+  margin: auto 0;
+}
+.NavbarUser {
+  display: inline-flex;
+  float: right;
+  padding: 1rem;
+  font-weight: bold;
+}
+.NavbarUserName {
+  margin: auto 0;
+  font-size: 1rem;
+  font-family: "Ubuntu", sans-serif;
+  padding-right: 1rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+.NavbarUserLogin {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+.NavbarButton {
+  background-color: #885cc4;
+  border: none;
+  color: white;
+  padding: 0.5rem;
+  cursor:pointer;
+  border-radius: 0.5rem;
+}

@@ -1,0 +1,39 @@
+input[type="text"],
+select {
+  width: 80%;
+  padding: 1rem 5rem;
+  margin: 8px 0;
+  display: inline-block;
+  font-size: 2rem;
+  font-family: "Belgrano", serif;
+  color: black;
+  font-weight: 500;
+  border: 0.2rem solid rgba(128, 128, 128, 0.466);
+  border-radius: 33px;
+  box-sizing: border-box;
+}
+.select::placeholder { 
+  color: grey;
+}
+*:focus {
+  outline: none;
+}
+.inputContainer {
+  padding-bottom: 1rem;
+}
+.button {
+  background-color: #885cc4;
+  border: none;
+  color: white;
+  cursor:pointer;
+  padding: 1rem;
+  margin-left: -65px;
+  border-radius: 50%;
+}
+.leftIcon {
+  color: rgba(128, 128, 128, 0.198);
+  display: inline-block;
+  position: absolute;
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
+}
