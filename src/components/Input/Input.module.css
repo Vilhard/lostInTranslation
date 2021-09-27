@@ -12,29 +12,14 @@ select {
   border-radius: 33px;
   box-sizing: border-box;
 }
-.select::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.select::placeholder { 
   color: grey;
 }
 *:focus {
   outline: none;
 }
-
-.formContainer {
-  text-align: center;
-  padding: 1.5rem;
-  background: repeating-linear-gradient(#ffffff, #ffffff 85%, #885cc4 15%, #885cc4 100%);
-  width: 60%;
-  border-radius: 1rem;
-  box-shadow: 0 0 1.2rem 0.3rem rgba(0, 0, 0, 0.2);
-  margin-top: -70px;
-}
 .inputContainer {
   padding-bottom: 1rem;
-}
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .button {
   background-color: #885cc4;

@@ -1,9 +1,9 @@
 import StartHeading from "./StartHeading";
-import TranslationsAPI from "../api/TranslationsAPI";
-import Input from './Input';
-import withUser from "../hoc/withUser";
+import TranslationsAPI from "../../api/TranslationsAPI";
+import Input from '../Input/Input';
+import withUser from "../../hoc/withUser";
 import styles from './Start.module.css'
-import { useUser } from "../context/UserContext";
+import { useUser } from "../../context/UserContext";
 import { useHistory } from "react-router-dom";
 
 const Start = () => {

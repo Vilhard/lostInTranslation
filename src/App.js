@@ -1,9 +1,9 @@
 import './App.css';
-import Translations from './components/Translations'
-import Start from './components/Start'
-import Profile from './components/Profile'
+import Translations from './components/Translations/Translations'
+import Start from './components/Start/Start'
+import Profile from './components/Profile/Profile'
 import {BrowserRouter, Switch, Route, NavLink } from 'react-router-dom'
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/Navbar';
 
 
 const App = () => {

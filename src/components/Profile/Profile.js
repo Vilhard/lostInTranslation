@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { useTranslationContext } from "../context/TranslationContext";
+import { useTranslationContext } from "../../context/TranslationContext";
 import styles from './Profile.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
-import TranslationsAPI from "../api/TranslationsAPI";
-import withUser from "../hoc/withUser.jsx";
+import TranslationsAPI from "../../api/TranslationsAPI";
+import withUser from "../../hoc/withUser.jsx";
 
 const Profile = () => {
 	const { translationState, dispatch } = useTranslationContext();

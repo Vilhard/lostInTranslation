@@ -1,9 +1,9 @@
-import withUser from "../hoc/withUser.jsx";
+import withUser from "../../hoc/withUser.jsx";
 import styles from "./Translations.module.css";
 import { useEffect } from "react";
-import Input from "./Input.jsx";
-import TranslationsAPI from "../api/TranslationsAPI";
-import { useTranslationContext } from "../context/TranslationContext";
+import Input from "../Input/Input.jsx";
+import TranslationsAPI from "../../api/TranslationsAPI";
+import { useTranslationContext } from "../../context/TranslationContext";
 import { useState } from "react";
 
 const Translation = () => {

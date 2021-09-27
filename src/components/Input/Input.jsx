@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faCommentDots } from "@fortawesome/free-solid-svg-icons";
-import styles from "./Start.module.css";
+import styles from "./Input.module.css";
+
 
 const Input = (props) => {
   return (
